@@ -6,14 +6,13 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SwipableCard = () => {
   const position = useRef(new Animated.ValueXY()).current;
 
-  // PanResponder to handle gestures
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: Animated.event(
         [
           null,
-          { dx: position.x, dy: position.y }, // Map gesture delta to position
+          { dx: position.x, dy: position.y }, // mapeo de gesturas
         ],
         { useNativeDriver: false }
       ),
@@ -25,7 +24,7 @@ const SwipableCard = () => {
             duration: 250,
             useNativeDriver: false,
           }).start(() => {
-            position.setValue({ x: 0, y: 0 }); // Reset position (or handle removal)
+            position.setValue({ x: 0, y: 0 }); // Resetear posicion
           });
         } else if (gesture.dx < -120) {
           // Swipe left
@@ -34,10 +33,10 @@ const SwipableCard = () => {
             duration: 250,
             useNativeDriver: false,
           }).start(() => {
-            position.setValue({ x: 0, y: 0 }); // Reset position (or handle removal)
+            position.setValue({ x: 0, y: 0 }); // Resetear posicion
           });
         } else {
-          // Return to original position
+          // regresar a la posicion original
           Animated.spring(position, {
             toValue: { x: 0, y: 0 },
             useNativeDriver: false,

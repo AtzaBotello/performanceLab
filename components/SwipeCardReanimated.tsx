@@ -7,19 +7,18 @@ import Animated, {
 } from 'react-native-reanimated';
 
 const SwipableCard = () => {
-  // Shared value for opacity
   const opacity = useSharedValue(0);
 
-  // Animated style for fade-in
+  // Fade in
   const animatedStyle = useAnimatedStyle(() => {
     return {
       opacity: opacity.value,
     };
   });
 
-  // Trigger fade-in effect on mount
+  // trigger fade -in al montarse el componente
   useEffect(() => {
-    opacity.value = withTiming(1, { duration: 1000 }); // Fade in over 1 second
+    opacity.value = withTiming(1, { duration: 1000 }); //Fade 1 segundo
   }, [opacity]);
 
   return (
