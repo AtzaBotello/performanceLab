@@ -1,22 +1,18 @@
 import React from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import UserProfilesScreen from "./UserProfileLab/components/UserProfileApp";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 3, // Retry failed queries up to 3 times
-      refetchOnWindowFocus: false, // Disable refetching when window regains focus
-    },
-  },
-});
-
-const App = () => {
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from "./mobileJWT/screens/LoginScreen";
+import ProfileScreen from "./mobileJWT/screens/ProfileScreen";
+ 
+const Stack = createStackNavigator();
+ 
+export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-        <UserProfilesScreen />
-    </QueryClientProvider>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-export default App;
+}
