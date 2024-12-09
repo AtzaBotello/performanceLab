@@ -1,0 +1,38 @@
+name: CI Pipeline
+
+# Objective 1: Trigger Conditions
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.18.2' # Replace with the Node.js version used by your project
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Check TypeScript types
+      - name: Validate TypeScript
+        run: npx tsc --noEmit
+
+      # Step 5: Run unit tests
+      - name: Run Tests
+        run: npm test
