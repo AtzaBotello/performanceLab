@@ -2,7 +2,11 @@ import React from "react";
 import { View, Text, Button } from "react-native";
 import { logout } from "../services/AuthService";
 
-const ProfileScreen: React.FC = ({ navigation }) => {
+interface ProfileScreenInterface {
+  navigation: any;
+}
+
+const ProfileScreen: React.FC<ProfileScreenInterface> = ({ navigation }: ProfileScreenInterface) => {
   const handleLogout = async () => {
     await logout();
     navigation.navigate("Login");

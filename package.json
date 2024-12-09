@@ -38,6 +38,7 @@
     "@react-native/metro-config": "0.76.3",
     "@react-native/typescript-config": "0.76.3",
     "@testing-library/react-native": "^12.9.0",
+    "@types/lodash": "^4.17.13",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
