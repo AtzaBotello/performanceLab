@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { View, TextInput, Button, Text, StyleSheet, Alert } from "react-native";
 import { login } from "../services/AuthService";
 
-const LoginScreen: React.FC = ({ navigation }) => {
+interface LoginScreenProps {
+  navigation: any;
+}
+
+const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }: LoginScreenProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

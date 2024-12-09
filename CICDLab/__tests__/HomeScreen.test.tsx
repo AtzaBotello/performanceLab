@@ -8,6 +8,6 @@ import { render, fireEvent } from "@testing-library/react-native";
 import {it, expect} from '@jest/globals';
  
 it("HomeScreen component renders correctly", () => {
-  const tree = render(<HomeScreen />).toJSON();
+  const tree = render(<HomeScreen navigation={{}} />).toJSON();
   expect(tree).toMatchSnapshot();
 });
